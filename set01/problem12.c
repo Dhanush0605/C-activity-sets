@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #include <stdio.h>
 
 struct _complex {
@@ -75,6 +74,3 @@ void output(int n, Complex c[n], Complex result) {
     }
     printf("Result: %f + %fi\n", result.real, result.imaginary);
 }
-=======
-
->>>>>>> c1ffc74eeaa9059431174949411a077e37e8890d
