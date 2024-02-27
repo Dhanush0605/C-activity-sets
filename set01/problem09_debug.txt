@@ -1,0 +1,63 @@
+Reading symbols from a.exe...
+(gdb) r
+Starting program: /c/Users/Dhanush DN/Documents/c-activity-sets/set01/a.exe
+[New Thread 7904.0x1ed8]
+[New Thread 7904.0x13d0]
+[New Thread 7904.0x4a28]
+[New Thread 7904.0x3224]
+enter the number :
+49
+the squareroot of 49.000000 is 7.000000[Thread 7904.0xf4c exited with code 0]
+[Thread 7904.0x3224 exited with code 0]
+[Thread 7904.0x4a28 exited with code 0]
+[Thread 7904.0x1ed8 exited with code 0]
+[Inferior 1 (process 7904) exited normally]
+(gdb) l
+1       #include <stdio.h>
+2       #include <stdlib.h>
+3       #include <math.h>
+4
+5       float input();
+6       float square_root(float n);
+7       void output(float n, float sqrroot);
+8
+9       int main()
+10      {
+(gdb) l
+11          float n, sqrrt;
+12          n=input();
+13          sqrrt=square_root(n);
+14          output(n,sqrrt);
+15          return 0;
+16      }
+17
+18      float input()
+19      {
+20          float n;
+(gdb) l
+21          printf("enter the number :\n");
+22          scanf("%f", &n);
+23          return n;
+24      }
+25
+26      float square_root(float n)
+27      {
+28
+29
+30        float x_old=1,x_new=n/2;
+(gdb) l
+31        float precision=0.000001;
+32        while(fabs(x_new-x_old)>precision)
+33          {
+34            x_old=x_new;
+35            x_new=(x_old+n/x_old)/2;
+36          }
+37        return x_new;
+38      }
+39
+40      void output(float n, float sqrroot)
+(gdb) l
+41      {
+42         printf("the squareroot of %f is %f", n,sqrroot);
+43      }
+(gdb) l
