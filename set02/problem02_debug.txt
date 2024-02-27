@@ -1,0 +1,40 @@
+Reading symbols from a.exe...
+(gdb) r
+Starting program: /c/Users/Dhanush DN/Documents/c-activity-sets/set02/a.exe
+[New Thread 1544.0xfc0]
+[New Thread 1544.0x48e0]
+[New Thread 1544.0x1b9c]
+Enter the length of the side: 5
+Enter the length of the side: 4
+Enter the length of the side: 5
+Triangle with sides 5, 4, 5 is not a scalene triangle.
+[Thread 1544.0x10f4 exited with code 0]
+[Thread 1544.0x1b9c exited with code 0]
+[Thread 1544.0x48e0 exited with code 0]
+[Inferior 1 (process 1544) exited normally]
+(gdb) l
+13          else
+14              return 0; // Not Scalene
+15      }
+16
+17      void output(int a, int b, int c, int is_scalene) {
+18          printf("Triangle with sides %d, %d, %d is ", a, b, c);
+19          if (is_scalene)
+20              printf("a scalene triangle.\n");
+21          else
+22              printf("not a scalene triangle.\n");
+(gdb) l
+23      }
+24
+25      int main() {
+26          int side1, side2, side3;
+27          side1 = input_side();
+28          side2 = input_side();
+29          side3 = input_side();
+30
+31          int is_scalene = check_scalene(side1, side2, side3);
+32          output(side1, side2, side3, is_scalene);
+(gdb) l
+33
+34          return 0;
+35      }
