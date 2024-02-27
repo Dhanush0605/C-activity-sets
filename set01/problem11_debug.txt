@@ -1,0 +1,70 @@
+Reading symbols from a.exe...
+(gdb) r
+Starting program: /c/Users/Dhanush DN/Documents/c-activity-sets/set01/a.exe
+[New Thread 4456.0x490c]
+[New Thread 4456.0x1f6c]
+[New Thread 4456.0x1078]
+Enter first complex number:
+Enter real part: 2 3
+Enter imaginary part: Enter second complex number:
+Enter real part: 4 5
+Enter imaginary part: Sum of (2.00 + 3.00i) and (4.00 + 5.00i) is (6.00 + 8.00i)
+[Thread 4456.0x41c4 exited with code 0]
+[Thread 4456.0x1078 exited with code 0]
+[Thread 4456.0x490c exited with code 0]
+[Inferior 1 (process 4456) exited normally]
+(gdb) l
+2       struct _complex {
+3           float real;
+4           float imaginary;
+5       };
+6
+7       typedef struct _complex Complex;
+8
+9       Complex input_complex();
+10      Complex add_complex(Complex a, Complex b);
+11      void output(Complex a, Complex b, Complex sum);
+(gdb) l
+12
+13          int main() {
+14          Complex num1, num2, sum;
+15
+16          printf("Enter first complex number:\n");
+17          num1 = input_complex();
+18
+19          printf("Enter second complex number:\n");
+20          num2 = input_complex();
+21
+(gdb) l
+22          sum = add_complex(num1, num2);
+23
+24          output(num1, num2, sum);
+25
+26          return 0;
+27      }
+28
+29          Complex input_complex() {
+30          Complex num;
+31          printf("Enter real part: ");
+(gdb) l
+32          scanf("%f", &num.real);
+33          printf("Enter imaginary part: ");
+34          scanf("%f", &num.imaginary);
+35          return num;
+36      }
+37
+38          Complex add_complex(Complex a, Complex b) {
+39          Complex result;
+40          result.real = a.real + b.real;
+41          result.imaginary = a.imaginary + b.imaginary;
+(gdb) l
+42          return result;
+43      }
+44
+45          void output(Complex a, Complex b, Complex sum) {
+46          printf("Sum of ");
+47          printf("(%.2f + %.2fi) and ", a.real, a.imaginary);
+48          printf("(%.2f + %.2fi) is ", b.real, b.imaginary);
+49          printf("(%.2f + %.2fi)\n", sum.real, sum.imaginary);
+50      }
+51
