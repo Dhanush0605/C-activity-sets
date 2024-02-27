@@ -1,0 +1,17 @@
+Reading symbols from a.exe...
+(gdb) r
+Starting program: /c/Users/Dhanush DN/Documents/c-activity-sets/set01/a.exe
+[New Thread 19000.0x494c]
+[New Thread 19000.0x5694]
+[New Thread 19000.0x2bac]
+[New Thread 19000.0x30c8]
+enter the number : 4
+enter the number : 5
+the sum of 4 +5 is 9[Thread 19000.0x2698 exited with code 9]
+[Thread 19000.0x494c exited with code 9]
+[Thread 19000.0x30c8 exited with code 9]
+[Thread 19000.0x2bac exited with code 9]
+
+Program terminated with signal SIGKILL, Killed.
+The program no longer exists.
+(gdb)
