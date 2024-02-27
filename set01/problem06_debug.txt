@@ -1,0 +1,64 @@
+Reading symbols from a.exe...
+(gdb) r
+Starting program: /c/Users/Dhanush DN/Documents/c-activity-sets/set01/a.exe
+[New Thread 7120.0x37fc]
+[New Thread 7120.0x27fc]
+[New Thread 7120.0x4568]
+enter the value
+1
+enter the value
+1
+enter the value
+0
+the largest between 1 and 1 and 0 is 1[Thread 7120.0x4f68 exited with code 0]
+[Thread 7120.0x27fc exited with code 0]
+[Thread 7120.0x37fc exited with code 0]
+[Inferior 1 (process 7120) exited normally]
+(gdb) l
+1       #include <stdio.h>
+2       int input();
+3       void compare(int a, int b, int c , int *largest);
+4       void output(int a,int b,int c , int *largest);
+5
+6       int main()
+7       {
+8           int a,b,c,largest;
+9           a=input();
+10          b=input();
+(gdb) l
+11          c=input();
+12          compare(a,b,c,&largest);
+13          output(a,b,c,&largest);
+14          return 0;
+15      }
+16      int input()
+17      {
+18          int x;
+19          printf("enter the value\n");
+20          scanf("%d",&x);
+(gdb) l
+21          return x;
+22      }
+23      void compare(int a,int b,int c, int *largest)
+24      {
+25          if(a>=b &&a>=c)
+26          {
+27              *largest=a;
+28          }
+29          if(b>=a && b>=c)
+30          {
+(gdb) l
+31              *largest=b;
+32          }
+33          else
+34          {
+35              *largest =c;
+36          }
+37      }
+38      void output(int a ,int b, int c, int *largest)
+39      {
+40          printf("the largest between %d and %d and %d is %d",a,b,c, *largest);
+(gdb) l
+41      }
+(gdb) q
+
