@@ -1,0 +1,36 @@
+Starting program: /c/Users/Dhanush DN/Documents/c-activity-sets/set01/a.exe
+[New Thread 20660.0x3be8]
+[New Thread 20660.0x483c]
+[New Thread 20660.0x13e4]
+[New Thread 20660.0xccc]
+Enter two numbers
+1
+2
+Sum of 1 + 2 is 3
+[Thread 20660.0x13e4 exited with code 0]
+[Thread 20660.0x4cb8 exited with code 0]
+[Thread 20660.0x3be8 exited with code 0]
+[Thread 20660.0xccc exited with code 0]
+[Inferior 1 (process 20660) exited normally]
+(gdb) l
+5         scanf("%d %d",a,b);
+6       
+7
+8       void add(int a, int b, int *sum)
+9       {
+10          *sum = a+b;
+11      }
+12      void output(int a, int b, int sum)
+13      {
+14        printf("Sum of %d + %d is %d\n",a,b,sum);
+(gdb) l
+15      }
+16      int main()
+17      {
+18          int a,b,sum;
+19          input(&a,&b);
+20          add(a,b,&sum);
+21          output(a,b,sum);
+22          return 0;
+23      }
+(gdb) q
