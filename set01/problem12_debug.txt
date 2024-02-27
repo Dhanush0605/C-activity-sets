@@ -1,0 +1,133 @@
+Reading symbols from a.exe...
+(gdb) r
+Starting program: /c/Users/Dhanush DN/Documents/c-activity-sets/set01/a.exe
+[New Thread 20476.0x47c0]
+[New Thread 20476.0x3c70]
+[New Thread 20476.0x10e0]
+Enter the number of complex numbers: 3
+Enter 3 complex numbers:
+Complex number 1:
+Enter real part: 3 4
+Enter imaginary part: Complex number 2:
+Enter real part: 4 5
+Enter imaginary part: Complex number 3:
+Enter real part: 6 7
+Enter imaginary part:
+The sum of the following complex numbers:
+3.00 + 4.00i
+4.00 + 5.00i
+6.00 + 7.00i
+
+is: 13.00 + 16.00i
+[Thread 20476.0x3694 exited with code 0]
+[Thread 20476.0x10e0 exited with code 0]
+[Thread 20476.0x47c0 exited with code 0]
+[Inferior 1 (process 20476) exited normally]
+(gdb) r
+Starting program: /c/Users/Dhanush DN/Documents/c-activity-sets/set01/a.exe
+[New Thread 19592.0x2fc]
+[New Thread 19592.0x1a18]
+[New Thread 19592.0x4edc]
+[New Thread 19592.0x6d0]
+Enter the number of complex numbers: 3
+Enter 3 complex numbers:
+Complex number 1:
+Enter real part: 2 3
+Enter imaginary part: Complex number 2:
+Enter real part: 4 5
+Enter imaginary part: Complex number 3:
+Enter real part: 6 7
+Enter imaginary part:
+The sum of the following complex numbers:
+2.00 + 3.00i
+4.00 + 5.00i
+6.00 + 7.00i
+
+is: 12.00 + 15.00i
+[Thread 19592.0x3648 exited with code 0]
+[Thread 19592.0x6d0 exited with code 0]
+[Thread 19592.0x2fc exited with code 0]
+[Thread 19592.0x4edc exited with code 0]
+[Inferior 1 (process 19592) exited normally]
+(gdb) l
+2
+3       struct _complex {
+4           float real, imaginary;
+5       };
+6
+7       typedef struct _complex Complex;
+8
+9       int get_n();
+10      Complex input_complex();
+11      void input_n_complex(int n, Complex c[]);
+(gdb) l
+12      Complex add(Complex a, Complex b);
+13      Complex add_n_complex(int n, Complex c[]);
+14      void output(int n, Complex c[], Complex result);
+15
+16      int main() {
+17          int n;
+18          Complex result;
+19
+20          n = get_n();
+21          Complex numbers[n];
+(gdb) l
+22
+23          input_n_complex(n, numbers);
+24          result = add_n_complex(n, numbers);
+25
+26          output(n, numbers, result);
+27
+28          return 0;
+29      }
+30      int get_n() {
+31          int n;
+(gdb) l
+32          printf("Enter the number of complex numbers: ");
+33          scanf("%d", &n);
+34          return n;
+35      }
+36
+37      Complex input_complex() {
+38          Complex num;
+39          printf("Enter real part: ");
+40          scanf("%f", &num.real);
+41          printf("Enter imaginary part: ");
+(gdb) l
+42          scanf("%f", &num.imaginary);
+43          return num;
+44      }
+45
+46      void input_n_complex(int n, Complex c[]) {
+47          printf("Enter %d complex numbers:\n", n);
+48          for (int i = 0; i < n; i++) {
+49              printf("Complex number %d:\n", i + 1);
+50              c[i] = input_complex();
+51          }
+(gdb) l
+52      }
+53
+54      Complex add(Complex a, Complex b) {
+55          Complex result;
+56          result.real = a.real + b.real;
+57          result.imaginary = a.imaginary + b.imaginary;
+58          return result;
+59      }
+60
+61      Complex add_n_complex(int n, Complex c[]) {
+(gdb) l
+62          Complex sum = {0, 0};
+63          for (int i = 0; i < n; i++) {
+64              sum = add(sum, c[i]);
+65          }
+66          return sum;
+67      }
+68
+69      void output(int n, Complex c[], Complex  result) {
+70          printf("\nThe sum of the following complex numbers:\n");
+71          for (int i = 0; i < n; i++) {
+(gdb) l
+72              printf("%.2f + %.2fi\n", c[i].real, c[i].imaginary);
+73          }
+74          printf("\nis: %.2f + %.2fi\n", result.real, result.imaginary);
+75      }
