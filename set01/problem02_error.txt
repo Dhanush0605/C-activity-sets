@@ -1,0 +1,11 @@
+problem02.c: In function 'main':
+problem02.c:6:5: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+     printf("Enter first number: ");
+     ^~~~~~
+problem02.c:6:5: warning: incompatible implicit declaration of built-in function 'printf'
+problem02.c:6:5: note: include '<stdio.h>' or provide a declaration of 'printf'
+problem02.c:7:5: warning: implicit declaration of function 'scanf' [-Wimplicit-function-declaration]
+     scanf("%d", &num1);
+     ^~~~~
+problem02.c:7:5: warning: incompatible implicit declaration of built-in function 'scanf'
+problem02.c:7:5: note: include '<stdio.h>' or provide a declaration of 'scanf'

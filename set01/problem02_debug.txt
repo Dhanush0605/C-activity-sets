@@ -1,0 +1,16 @@
+Thread 1 hit Breakpoint 1, 0x00401403 in main ()
+(gdb) r
+The program being debugged has been started already.
+Start it from the beginning? (y or n) y
+Starting program: /c/Users/Dhanush DN/Documents/c-activity-sets/set01/problem02.exe
+[New Thread 1412.0x3208]
+
+Thread 1 hit Breakpoint 1, 0x00401403 in main ()
+(gdb) n
+Single stepping until exit from function main,
+which has no line number information.
+enter two numbers:
+4
+5
+the sum of 4 + 5 is 90x004010fd in __mingw_CRTStartup ()
+(gdb)
