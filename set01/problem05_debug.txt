@@ -1,0 +1,36 @@
+Reading symbols from a.exe...
+(gdb) r
+Starting program: /c/Users/Dhanush DN/Documents/c-activity-sets/set01/a.exe
+[New Thread 17588.0x28d0]
+[New Thread 17588.0x4eb0]
+[New Thread 17588.0x3170]
+Enter a number: 1
+Enter a number: 2
+Enter a number: 3
+The largest number among them is: 3
+[Thread 17588.0x4448 exited with code 0]
+[Thread 17588.0x28d0 exited with code 0]
+[Thread 17588.0x4eb0 exited with code 0]
+[Inferior 1 (process 17588) exited normally]
+(gdb) l
+15          }
+16
+17          if (c > largest) {
+18             largest = c;
+19          }
+20
+21          return largest;
+22      }
+23      void output(int a, int b, int c, int largest) {
+24         printf("The largest number among them is: %d\n", largest);
+(gdb) l
+25      }
+26
+27      int main() {
+28          int num1, num2, num3, largest;
+29          num1 = input();
+30          num2 = input();
+31          num3 = input();
+32          largest = compare(num1, num2, num3);
+33          output(num1, num2, num3, largest);
+34          return 0;
