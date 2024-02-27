@@ -1,0 +1,29 @@
+(gdb) file problem02.exe
+Load new symbol table from "problem02.exe"? (y or n) y
+Reading symbols from problem02.exe...
+(gdb) r
+Starting program: /c/Users/Dhanush DN/Documents/c-activity-sets/set01/problem02.exe
+[New Thread 14148.0x5398]
+enter two numbers:
+8
+8
+the sum of 8 + 8 is 16[Thread 14148.0xbd4 exited with code 0]
+[Inferior 1 (process 14148) exited normally]
+(gdb) b output
+Function "output" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) n
+(gdb) b main
+Breakpoint 1 at 0x401403
+(gdb) r
+Starting program: /c/Users/Dhanush DN/Documents/c-activity-sets/set01/problem02.exe
+[New Thread 17328.0x56bc]
+
+Thread 1 hit Breakpoint 1, 0x00401403 in main ()
+(gdb) n
+Single stepping until exit from function main,
+which has no line number information.
+enter two numbers:
+8
+8
+the sum of 8 + 8 is 160x004010fd in __mingw_CRTStartup ()
+(gdb)

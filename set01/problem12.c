@@ -73,4 +73,3 @@ void output(int n, Complex c[n], Complex result) {
         printf("Complex Number %d: %f + %fi\n", i + 1, c[i].real, c[i].imaginary);
     }
     printf("Result: %f + %fi\n", result.real, result.imaginary);
-}
