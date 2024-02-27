@@ -1,0 +1,46 @@
+Reading symbols from a.exe...
+(gdb) r
+Starting program: /c/Users/Dhanush DN/Documents/c-activity-sets/set02/a.exe
+[New Thread 19988.0x1084]
+[New Thread 19988.0x4e00]
+[New Thread 19988.0x3d60]
+Enter the base and height of the triangle: 1
+2
+Base: 1.00
+Height: 2.00
+Area: 1.00
+[Thread 19988.0x4220 exited with code 0]
+[Thread 19988.0x3d60 exited with code 0]
+[Thread 19988.0x4e00 exited with code 0]
+[Inferior 1 (process 19988) exited normally]
+(gdb) l
+1       #include <stdio.h>
+2       void input(float *base, float *height);
+3       void find_area(float base, float height, float *area);
+4       void output(float base, float height, float area);
+5
+6       int main() {
+7           float base, height, area;
+8           input(&base, &height);
+9           find_area(base, height, &area);
+10          output(base, height, area);
+(gdb) l
+11          return 0;
+12      }
+13
+14          void input(float *base, float *height) {
+15          printf("Enter the base and height of the triangle: ");
+16          scanf("%f %f", base, height);
+17      }
+18
+19          void find_area(float base, float height, float *area) {
+20          *area = 0.5 * base * height;
+(gdb) l
+21      }
+22
+23          void output(float base, float height, float area) {
+24          printf("Base: %.2f\n", base);
+25          printf("Height: %.2f\n", height);
+26          printf("Area: %.2f\n", area);
+27      }
+(gdb) q
