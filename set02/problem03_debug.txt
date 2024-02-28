@@ -1,0 +1,56 @@
+Reading symbols from a.exe...
+(gdb) r
+Starting program: /c/Users/Dhanush DN/Documents/c-activity-sets/set02/a.exe
+[New Thread 8284.0x3b30]
+[New Thread 8284.0x3ecc]
+[New Thread 8284.0x1d1c]
+Enter a number: 8
+8 is a composite number.
+[Thread 8284.0x3c50 exited with code 0]
+[Thread 8284.0x3ecc exited with code 0]
+[Thread 8284.0x3b30 exited with code 0]
+[Inferior 1 (process 8284) exited normally]
+(gdb) l
+1       #include <stdio.h>
+2
+3       int input_number();
+4       int is_composite(int n);
+5       void output(int n, int result);
+6
+7       int main() {
+8           int num = input_number();
+9           int result = is_composite(num);
+10          output(num, result);
+(gdb) l
+11          return 0;
+12      }
+13
+14      int input_number() {
+15          int num;
+16          printf("Enter a number: ");
+17          scanf("%d", &num);
+18          return num;
+19      }
+20
+(gdb) l
+21      int is_composite(int n) {
+22          if (n <= 1) {
+23              return 0;
+24          }
+25          int factors = 0;
+26          for (int i = 2; i <= n / 2; ++i) {
+27              if (n % i == 0) {
+28                  factors++;
+29              }
+30          }
+(gdb) l
+31          return factors > 0;
+32      }
+33
+34      void output(int n, int result) {
+35          if (result) {
+36              printf("%d is a composite number.\n", n);
+37          } else {
+38              printf("%d is not a composite number.\n", n);
+39          }
+40      }
