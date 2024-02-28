@@ -1,0 +1,43 @@
+Reading symbols from a.exe...
+(gdb) r
+Starting program: /c/Users/Dhanush DN/Documents/c-activity-sets/set02/a.exe
+[New Thread 4200.0x31c4]
+[New Thread 4200.0x4c9c]
+[New Thread 4200.0x4c98]
+[New Thread 4200.0x1764]
+Enter the first number: 12
+Enter the second number: 16
+The GCD of 12 and 16 is: 4
+[Thread 4200.0x2f40 exited with code 0]
+[Thread 4200.0x4c98 exited with code 0]
+[Thread 4200.0x1764 exited with code 0]
+[Thread 4200.0x4c9c exited with code 0]
+[Inferior 1 (process 4200) exited normally]
+(gdb) l
+13      int find_gcd(int a, int b) {
+14          while (b != 0) {
+15              int temp = b;
+16              b = a % b;
+17              a = temp;
+18          }
+19          return a;
+20      }
+21
+22      void output(int a, int b, int gcd) {
+(gdb) l
+23          printf("The GCD of %d and %d is: %d\n", a, b, gcd);
+24      }
+25
+26      int main() {
+27          printf("Enter the first number: ");
+28          int num1 = input();
+29          printf("Enter the second number: ");
+30          int num2 = input();
+31
+32          int gcd = find_gcd(num1, num2);
+(gdb) l
+33
+34          output(num1, num2, gcd);
+35
+36          return 0;
+37      }
