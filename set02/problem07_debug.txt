@@ -1,0 +1,50 @@
+Reading symbols from a.exe...
+(gdb) r
+Starting program: /c/Users/Dhanush DN/Documents/c-activity-sets/set02/a.exe
+[New Thread 20028.0x33ac]
+[New Thread 20028.0xd58]
+[New Thread 20028.0x311c]
+Enter the base of the triangle: 2
+Enter the altitude of the triangle: 3
+The area of triangle with base = 2.000000 and altitude = 3.000000 is 3.000000
+[Thread 20028.0x55d8 exited with code 0]
+[Thread 20028.0x33ac exited with code 0]
+[Thread 20028.0xd58 exited with code 0]
+[Inferior 1 (process 20028) exited normally]
+(gdb) l
+1       #include <stdio.h>
+2
+3       typedef struct _triangle {
+4           float base, altitude, area;
+5       } Triangle;
+6
+7       Triangle input_triangle();
+8       void find_area(Triangle *t);
+9       void output(Triangle t);
+10
+(gdb) l
+11      int main() {
+12          Triangle t = input_triangle();
+13          find_area(&t);
+14          output(t);
+15          return 0;
+16      }
+17
+18      Triangle input_triangle() {
+19          Triangle t;
+20          printf("Enter the base of the triangle: ");
+(gdb) l
+21          scanf("%f", &t.base);
+22          printf("Enter the altitude of the triangle: ");
+23          scanf("%f", &t.altitude);
+24          return t;
+25      }
+26
+27      void find_area(Triangle *t) {
+28          t->area = 0.5 * t->base * t->altitude;
+29      }
+30
+(gdb) l
+31      void output(Triangle t) {
+32          printf("The area of triangle with base = %.6f and altitude = %.6f is %.6f\n", t.base, t.altitude, t.area);
+33      }
