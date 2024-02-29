@@ -1,0 +1,100 @@
+Reading symbols from a.exe...
+(gdb) r
+Starting program: /c/Users/Dhanush DN/Documents/c-activity-sets/set02/a.exe
+[New Thread 17524.0x485c]
+[New Thread 17524.0x2240]
+[New Thread 17524.0x431c]
+Enter the number of triangles: 2
+Enter the base and altitude of 2 triangles:
+Enter the base of the triangle: 2 3
+Enter the altitude of the triangle: Enter the base of the triangle: 4 6
+Enter the altitude of the triangle: The smallest triangle out of triangles with base and height (2.00,3.00) (4.00,6.00) is the triangle having base 2.00, height 3.00, and area 3.00
+[Thread 17524.0x4b50 exited with code 0]
+[Thread 17524.0x2240 exited with code 0]
+[Thread 17524.0x485c exited with code 0]
+[Inferior 1 (process 17524) exited normally]
+(gdb) l
+1       #include <stdio.h>
+2
+3       typedef struct _triangle {
+4           float base, altitude, area;
+5       } Triangle;
+6
+7       int input_n();
+8       Triangle input_triangle();
+9       void input_n_triangles(int n, Triangle t[n]);
+10      void find_area(Triangle *t);
+(gdb) l
+11      void find_n_areas(int n, Triangle t[n]);
+12      Triangle find_smallest_triangle(int n, Triangle t[n]);
+13      void output(int n, Triangle t[n], Triangle smallest);
+14
+15      int main() {
+16          int n = input_n();
+17          Triangle triangles[n];
+18          input_n_triangles(n, triangles);
+19          find_n_areas(n, triangles);
+20          Triangle smallest = find_smallest_triangle(n, triangles);
+(gdb) l
+21          output(n, triangles, smallest);
+22          return 0;
+23      }
+24
+25      int input_n() {
+26          int n;
+27          printf("Enter the number of triangles: ");
+28          scanf("%d", &n);
+29          return n;
+30      }
+(gdb) l
+31
+32      Triangle input_triangle() {
+33          Triangle t;
+34          printf("Enter the base of the triangle: ");
+35          scanf("%f", &t.base);
+36          printf("Enter the altitude of the triangle: ");
+37          scanf("%f", &t.altitude);
+38          return t;
+39      }
+40
+(gdb) l
+41      void input_n_triangles(int n, Triangle t[n]) {
+42          printf("Enter the base and altitude of %d triangles:\n", n);
+43          for (int i = 0; i < n; ++i) {
+44              t[i] = input_triangle();
+45          }
+46      }
+47
+48      void find_area(Triangle *t) {
+49          t->area = 0.5 * t->base * t->altitude;
+50      }
+(gdb) l
+51
+52      void find_n_areas(int n, Triangle t[n]) {
+53          for (int i = 0; i < n; ++i) {
+54              find_area(&t[i]);
+55          }
+56      }
+57
+58      Triangle find_smallest_triangle(int n, Triangle t[n]) {
+59          Triangle smallest = t[0];
+60          for (int i = 1; i < n; ++i) {
+(gdb) l
+61              if (t[i].area < smallest.area) {
+62                  smallest = t[i];
+63              }
+64          }
+65          return smallest;
+66      }
+67
+68      void output(int n, Triangle t[n], Triangle smallest) {
+69          printf("The smallest triangle out of triangles with base and height ");
+70          for (int i = 0; i < n; ++i) {
+(gdb) l
+71              printf("(%0.2f,%0.2f) ", t[i].base, t[i].altitude);
+72          }
+73          printf("is the triangle having base %.2f, height %.2f, and area %.2f\n", smallest.base, smallest.altitude, smallest.area);
+74      }
+(gdb) l
+Line number 75 out of range; problem08.c has 74 lines.
+(gdb) q
