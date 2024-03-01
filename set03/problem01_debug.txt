@@ -1,0 +1,34 @@
+Reading symbols from a.exe...
+(gdb) r
+Starting program: /c/Users/Dhanush DN/Documents/c-activity-sets/set03/a.exe
+[New Thread 17392.0xa24]
+[New Thread 17392.0x2c08]
+[New Thread 17392.0x1eac]
+Enter coordinates of first point (x1 y1): 1 1
+Enter coordinates of second point (x2 y2): 2 2
+The distance between point (1.000000, 1.000000) and (2.000000, 2.000000) is 1.4142
+[Thread 17392.0x3314 exited with code 0]
+[Thread 17392.0xa24 exited with code 0]
+[Thread 17392.0x2c08 exited with code 0]
+[Inferior 1 (process 17392) exited normally]
+(gdb) l
+8           scanf("%f %f", x2, y2);
+9       }
+10
+11      float find_distance(float x1, float y1, float x2, float y2) {
+12          return sqrt(pow((x2 - x1), 2) + pow((y2 - y1), 2));
+13      }
+14
+15      // Function to output the result
+16      void output(float x1, float y1, float x2, float y2, float distance) {
+17          printf("The distance between point (%f, %f) and (%f, %f) is %.4f\n", x1, y1, x2, y2, distance);
+(gdb) l
+18      }
+19
+20      int main() {
+21          float x1, y1, x2, y2;
+22          input(&x1, &y1, &x2, &y2);
+23          float distance = find_distance(x1, y1, x2, y2);
+24          output(x1, y1, x2, y2, distance);
+25          return 0;
+26      }
