@@ -1,0 +1,48 @@
+Reading symbols from a.exe...
+(gdb) r
+Starting program: /c/Users/Dhanush DN/Documents/c-activity-sets/set03/a.exe
+[New Thread 5552.0x4d20]
+[New Thread 5552.0x1e8c]
+[New Thread 5552.0x28e0]
+Enter the value of n: 5
+fibo(5) = 5
+[Thread 5552.0x1474 exited with code 0]
+[Thread 5552.0x28e0 exited with code 0]
+[Thread 5552.0x1e8c exited with code 0]
+[Inferior 1 (process 5552) exited normally]
+(gdb) l
+1       #include <stdio.h>
+2
+3       int input();
+4       int find_fibo(int n);
+5       void output(int n, int fibo);
+6
+7       int main() {
+8           int n, fibo;
+9           n = input();
+10          fibo = find_fibo(n);
+(gdb) l
+11          output(n, fibo);
+12          return 0;
+13      }
+14
+15      int input() {
+16          int n;
+17          printf("Enter the value of n: ");
+18          scanf("%d", &n);
+19          return n;
+20      }
+(gdb) l
+21
+22      int find_fibo(int n) {
+23          if (n <= 1)
+24              return n;
+25          else
+26              return find_fibo(n - 1) + find_fibo(n - 2);
+27      }
+28
+29      void output(int n, int fibo) {
+30          printf("fibo(%d) = %d\n", n, fibo);
+(gdb) l
+31      }
+(gdb) l
