@@ -1,0 +1,64 @@
+Reading symbols from a.exe...
+(gdb) r
+Starting program: /c/Users/Dhanush DN/Documents/c-activity-sets/set03/a.exe
+[New Thread 13784.0x345c]
+[New Thread 13784.0x3b40]
+[New Thread 13784.0x5690]
+[New Thread 13784.0xd34]
+Enter the main string: helloworldhello
+Enter the substring: world
+The index of 'world' in 'helloworldhello' is 5
+[Thread 13784.0xf20 exited with code 0]
+[Thread 13784.0x5690 exited with code 0]
+[Thread 13784.0x3b40 exited with code 0]
+[Thread 13784.0x345c exited with code 0]
+[Inferior 1 (process 13784) exited normally]
+(gdb) l
+1       #include <stdio.h>
+2       #include <string.h>
+3
+4       void input_string(char* a, char* b);
+5       int sub_str_index(char* string, char* substring);
+6       void output(char *string, char *substring, int index);
+7
+8       int main() {
+9           char string[100], substring[100];
+10          input_string(string, substring);
+(gdb) l
+11          int index = sub_str_index(string, substring);
+12          output(string, substring, index);
+13          return 0;
+14      }
+15
+16      void input_string(char* a, char* b) {
+17          printf("Enter the main string: ");
+18          scanf("%s", a);
+19          printf("Enter the substring: ");
+20          scanf("%s", b);
+(gdb) l
+21      }
+22
+23      int sub_str_index(char* string, char* substring) {
+24          int string_length = strlen(string);
+25          int sub_length = strlen(substring);
+26
+27          for (int i = 0; i <= string_length - sub_length; i++) {
+28              int j;
+29              for (j = 0; j < sub_length; j++) {
+30                  if (string[i + j] != substring[j])
+(gdb) l
+31                      break;
+32              }
+33              if (j == sub_length)
+34                  return i;
+35          }
+36          return -1; 
+37      }
+38
+39      void output(char *string, char *substring, int index) {
+40          if (index != -1)
+(gdb) l
+41              printf("The index of '%s' in '%s' is %d\n", substring, string, index);
+42          else
+43              printf("'%s' not found in '%s'\n", substring, string);
+44      }
