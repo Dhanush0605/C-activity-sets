@@ -1,0 +1,37 @@
+Reading symbols from a.exe...
+(gdb) r
+Starting program: /c/Users/Dhanush DN/Documents/c-activity-sets/set03/a.exe
+[New Thread 20628.0x21d8]
+[New Thread 20628.0x3db8]
+[New Thread 20628.0x20bc]
+Enter the number of sides of the polygon: 4
+Enter the coordinates of point 1 (x,y): 0 0
+Enter the coordinates of point 2 (x,y): 1 0
+Enter the coordinates of point 3 (x,y): 1 1
+Enter the coordinates of point 4 (x,y): 0 1
+The perimeter of the polygon is 4.000000
+[Thread 20628.0x2b3c exited with code 0]
+[Thread 20628.0x3db8 exited with code 0]
+[Thread 20628.0x21d8 exited with code 0]
+[Inferior 1 (process 20628) exited normally]
+(gdb) l
+45          int i;
+46          for (i = 0; i < p->sides - 1; i++) {
+47              perimeter += find_distance(p->p[i], p->p[i + 1]);
+48          }
+49          perimeter += find_distance(p->p[i], p->p[0]);
+50          p->perimeter = perimeter;
+51      }
+52
+53      void output(Polygon p) {
+54          printf("The perimeter of the polygon is %.6f\n", p.perimeter);
+(gdb) l
+55      }
+56
+57      int main() {
+58          Polygon poly;
+59          input_polygon(&poly);
+60          find_perimeter(&poly);
+61          output(poly);
+62          return 0;
+63      }
