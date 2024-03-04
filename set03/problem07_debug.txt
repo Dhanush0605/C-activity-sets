@@ -1,0 +1,32 @@
+Starting program: /c/Users/Dhanush DN/Documents/c-activity-sets/set03/a.exe
+[New Thread 2728.0x750]
+[New Thread 2728.0x3880]
+[New Thread 2728.0x2890]
+Enter coordinates for point 1: 1 1
+Enter coordinates for point 2: 2 2
+The distance between the points (1.000000,1.000000) and (2.000000,2.000000) is 1.4142
+[Thread 2728.0x3088 exited with code 0]
+[Thread 2728.0x750 exited with code 0]
+[Thread 2728.0x3880 exited with code 0]
+[Inferior 1 (process 2728) exited normally]
+(gdb) l
+24          l.p2 = input_point();
+25          return l;
+26      }
+27
+28      void find_length(Line *l) {
+29          l->distance = sqrt(pow((l->p2.x - l->p1.x), 2) + pow((l->p2.y - l->p1.y), 2));
+30      }
+31
+32      void output(Line l) {
+33          printf("The distance between the points (%.6f,%.6f) and (%.6f,%.6f) is %.4f\n",
+(gdb) l
+34                 l.p1.x, l.p1.y, l.p2.x, l.p2.y, l.distance);
+35      }
+36
+37      int main() {
+38          Line line = input_line();
+39          find_length(&line);
+40          output(line);
+41          return 0;
+42      }
