@@ -1,0 +1,34 @@
+Reading symbols from a.exe...
+(gdb) r
+Starting program: /c/Users/Dhanush DN/Documents/c-activity-sets/set04/a.exe
+[New Thread 16676.0x2ac]
+[New Thread 16676.0x4b6c]
+[New Thread 16676.0x32a8]
+Enter the first fraction (numerator denominator): 1 2
+Enter the second fraction (numerator denominator): 1 4
+1/2 + 1/4 = 6/8
+[Thread 16676.0x5208 exited with code 0]
+[Thread 16676.0x4b6c exited with code 0]
+[Thread 16676.0x2ac exited with code 0]
+[Inferior 1 (process 16676) exited normally]
+(gdb) l
+7           scanf("%d %d", num2, den2);
+8       }
+9
+10      void add(int num1, int den1, int num2, int den2, int *res_num, int *res_den) {
+11          *res_num = num1 * den2 + num2 * den1;
+12          *res_den = den1 * den2;
+13      }
+14
+15      void output(int num1, int den1, int num2, int den2, int res_num, int res_den) {
+16          printf("%d/%d + %d/%d = %d/%d\n", num1, den1, num2, den2, res_num, res_den);
+(gdb) l
+17      }
+18
+19      int main() {
+20          int num1, den1, num2, den2, res_num, res_den;
+21          input(&num1, &den1, &num2, &den2);
+22          add(num1, den1, num2, den2, &res_num, &res_den);
+23          output(num1, den1, num2, den2, res_num, res_den);
+24          return 0;
+25      }
