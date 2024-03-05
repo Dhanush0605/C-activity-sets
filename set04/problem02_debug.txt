@@ -1,0 +1,49 @@
+
+Reading symbols from a.exe...
+(gdb) r
+Starting program: /c/Users/Dhanush DN/Documents/c-activity-sets/set04/a.exe
+[New Thread 16616.0x3cbc]
+[New Thread 16616.0x4e44]
+[New Thread 16616.0x2458]
+Enter the first fraction (numerator denominator): l
+Enter the second fraction (numerator denominator): Enter the third fraction (numerator denominator): The smallest of -13175/7, -13008/7, and -13232/7 is -13232/7
+[Thread 16616.0xf1c exited with code 0]
+[Thread 16616.0x3cbc exited with code 0]
+[Thread 16616.0x4e44 exited with code 0]
+[Inferior 1 (process 16616) exited normally]
+(gdb) l
+13      Fraction findSmallestFraction(Fraction frac1, Fraction frac2, Fraction frac3) {
+14          if (compareFractions(frac1, frac2) <= 0 && compareFractions(frac1, frac3) <= 0) {
+15              return frac1;
+16          } else if (compareFractions(frac2, frac1) <= 0 && compareFractions(frac2, frac3) <= 0) {
+17              return frac2;
+18          } else {
+19              return frac3;
+20          }
+21      }
+22
+(gdb) l
+23      int main() {
+24          Fraction frac1, frac2, frac3;
+25
+26          // Input three fractions
+27          printf("Enter the first fraction (numerator denominator): ");
+28          scanf("%d %d", &frac1.num, &frac1.den);
+29
+30          printf("Enter the second fraction (numerator denominator): ");
+31          scanf("%d %d", &frac2.num, &frac2.den);
+32
+(gdb) l
+33          printf("Enter the third fraction (numerator denominator): ");
+34          scanf("%d %d", &frac3.num, &frac3.den);
+35
+36          // Find the smallest fraction
+37          Fraction smallest = findSmallestFraction(frac1, frac2, frac3);
+38
+39          // Output the result
+40          printf("The smallest of %d/%d, %d/%d, and %d/%d is %d/%d\n",
+41                 frac1.num, frac1.den, frac2.num, frac2.den, frac3.num, frac3.den, smallest.num, smallest.den);
+42
+(gdb) l
+43          return 0;
+44      }
