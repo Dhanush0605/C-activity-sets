@@ -1,0 +1,35 @@
+Reading symbols from a.exe...
+(gdb) r
+Starting program: /c/Users/Dhanush DN/Documents/c-activity-sets/set04/a.exe
+[New Thread 13328.0x32f8]
+[New Thread 13328.0x164]
+[New Thread 13328.0x568c]
+Enter the value of n: 6
+Enter the value of r: 3
+For n = 6 and r = 3, nCr = 20
+[Thread 13328.0x3e18 exited with code 0]
+[Thread 13328.0x32f8 exited with code 0]
+[Thread 13328.0x164 exited with code 0]
+[Inferior 1 (process 13328) exited normally]
+(gdb) l
+7       }
+8       int nCr(int n, int r) {
+9           if (r == 0 || r == n) {
+10              return 1;
+11          } else {
+12              return nCr(n - 1, r - 1) + nCr(n - 1, r);
+13          }
+14      }
+15      void output(int n, int r, int result) {
+16          printf("For n = %d and r = %d, nCr = %d\n", n, r, result);
+(gdb) l
+17      }
+18
+19      int main() {
+20          int n, r;
+21          input_n_and_r(&n, &r);
+22          int result = nCr(n, r);
+23          output(n, r, result);
+24          return 0;
+25      }
+(gdb) l
