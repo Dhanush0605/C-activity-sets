@@ -1,0 +1,87 @@
+Reading symbols from a.exe...
+(gdb) r
+Starting program: /c/Users/Dhanush DN/Documents/c-activity-sets/set04/a.exe
+[New Thread 15164.0x41a0]
+[New Thread 15164.0x2e8c]
+[New Thread 15164.0x3850]
+[New Thread 15164.0x5118]
+Enter the degree of the polynomial: 1
+Enter the coefficients of the polynomial: 1 1
+Enter the value of x: 1
+H(1, 1.00, 1.00) = 1.00 + 1.00 * 1.00^11.00 = 2.0000000
+[Thread 15164.0x53c0 exited with code 0]
+[Thread 15164.0x2e8c exited with code 0]
+[Thread 15164.0x41a0 exited with code 0]
+[Thread 15164.0x3850 exited with code 0]
+[Inferior 1 (process 15164) exited normally]
+(gdb) l
+1       #include <stdio.h>
+2
+3       int input_degree();
+4       void input_coefficients(int n, float a[n]);
+5       float input_x();
+6       float evaluate_polynomial(int n, float a[n], float x);
+7       void output(int n, float a[n], float x, float result);
+8
+9       int main() {
+10          int n = input_degree();
+(gdb) l
+11          float coefficients[n];
+12          input_coefficients(n, coefficients);
+13          float x = input_x();
+14          float result = evaluate_polynomial(n, coefficients, x);
+15          output(n, coefficients, x, result);
+16          return 0;
+17      }
+18
+19      int input_degree() {
+20          int n;
+(gdb) l
+21          printf("Enter the degree of the polynomial: ");
+22          scanf("%d", &n);
+23          return n;
+24      }
+25
+26      void input_coefficients(int n, float a[n]) {
+27          printf("Enter the coefficients of the polynomial: ");
+28          for (int i = 0; i <= n; ++i) {
+29              scanf("%f", &a[i]);
+30          }
+(gdb) l
+31      }
+32
+33      float input_x() {
+34          float x;
+35          printf("Enter the value of x: ");
+36          scanf("%f", &x);
+37          return x;
+38      }
+39
+40      float evaluate_polynomial(int n, float a[n], float x) {
+(gdb) l
+41          float result = a[n];
+42          for (int i = n - 1; i >= 0; --i) {
+43              result = result * x + a[i];
+44          }
+45          return result;
+46      }
+47
+48      void output(int n, float a[n], float x, float result) {
+49          printf("H(%d, ", n);
+50          for (int i = 0; i <= n; ++i) {
+(gdb) l
+51              printf("%.2f", a[i]);
+52              if (i != n) {
+53                  printf(", ");
+54              }
+55          }
+56          printf(") = ");
+57          for (int i = 0; i <= n; ++i) {
+58              printf("%.2f", a[i]);
+59              if (i != n) {
+60                  printf(" + %.2f * %.2f^%d", a[i], x, n - i);
+(gdb) l
+61              }
+62          }
+63          printf(" = %.7f\n", result);
+64      }
