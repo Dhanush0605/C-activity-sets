@@ -1,0 +1,40 @@
+Reading symbols from a.exe...
+(gdb) r
+Starting program: /c/Users/Dhanush DN/Documents/c-activity-sets/set04/a.exe
+[New Thread 20776.0x3a4]
+[New Thread 20776.0x3f98]
+[New Thread 20776.0x3944]
+[New Thread 20776.0x531c]
+Enter the size of the array: 4 2 9 1 7
+Enter the elements of the array: The index of the largest number in the array is 1
+[Thread 20776.0x1fb8 exited with code 0]
+[Thread 20776.0x3f98 exited with code 0]
+[Thread 20776.0x3a4 exited with code 0]
+[Thread 20776.0x531c exited with code 0]
+[Inferior 1 (process 20776) exited normally]
+(gdb) l
+21          int max_index = 0;
+22          for (int i = 1; i < n; i++) {
+23              if (a[i] > a[max_index]) {
+24                  max_index = i;
+25              }
+26          }
+27          return max_index;
+28      }
+29
+30      // Function to output the result
+(gdb) l
+31      void output(int index) {
+32          printf("The index of the largest number in the array is %d\n", index);
+33      }
+34
+35      int main() {
+36          int n = input_size();
+37          int a[n];
+38          input_array(n, a);
+39          int index = find_largest_index(n, a);
+40          output(index);
+(gdb) l
+41          return 0;
+42      }
+(gdb) l
