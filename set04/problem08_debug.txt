@@ -1,0 +1,110 @@
+Reading symbols from a.exe...
+(gdb) r
+Starting program: /c/Users/Dhanush DN/Documents/c-activity-sets/set04/a.exe
+[New Thread 8992.0x74c]
+[New Thread 8992.0xa60]
+[New Thread 8992.0x583c]
+Enter the number of fractions: 3
+Enter 3 fractions (numerator denominator):
+4 3
+8 9
+1 2
+Sum of fractions: 4/3 + 8/9 + 1/2 = 49/18
+[Thread 8992.0x2904 exited with code 0]
+[Thread 8992.0xa60 exited with code 0]
+[Thread 8992.0x74c exited with code 0]
+[Inferior 1 (process 8992) exited normally]
+(gdb) l
+1       #include <stdio.h>
+2
+3       typedef struct fraction {
+4           int num, den;
+5       } Fraction;
+6
+7       int input_n();
+8       Fraction input_fraction();
+9       void input_n_fractions(int n, Fraction f[n]);
+10      int find_gcd(int a, int b);
+(gdb) l
+11      Fraction add_fractions(Fraction f1, Fraction f2);
+12      Fraction add_n_fractions(int n, Fraction f[n]);
+13      void output(int n, Fraction f[n], Fraction sum);
+14
+15      int main() {
+16          int n;
+17          Fraction sum;
+18
+19          n = input_n();
+20          Fraction fractions[n];
+(gdb) l
+21          input_n_fractions(n, fractions);
+22
+23          sum = add_n_fractions(n, fractions);
+24
+25          output(n, fractions, sum);
+26
+27          return 0;
+28      }
+29
+30      int input_n() {
+(gdb) l
+31          int n;
+32          printf("Enter the number of fractions: ");
+33          scanf("%d", &n);
+34          return n;
+35      }
+36
+37      Fraction input_fraction() {
+38          Fraction f;
+39          scanf("%d %d", &f.num, &f.den);
+40          return f;
+(gdb) l
+41      }
+42
+43      void input_n_fractions(int n, Fraction f[n]) {
+44          printf("Enter %d fractions (numerator denominator):\n", n);
+45          for (int i = 0; i < n; i++) {
+46              f[i] = input_fraction();
+47          }
+48      }
+49
+50      int find_gcd(int a, int b) {
+(gdb) l
+51          if (b == 0)
+52              return a;
+53          return find_gcd(b, a % b);
+54      }
+55
+56      Fraction add_fractions(Fraction f1, Fraction f2) {
+57          Fraction sum;
+58          sum.num = (f1.num * f2.den) + (f2.num * f1.den);
+59          sum.den = f1.den * f2.den;
+60
+(gdb) l
+61          int gcd = find_gcd(sum.num, sum.den);
+62          sum.num /= gcd;
+63          sum.den /= gcd;
+64
+65          return sum;
+66      }
+67
+68      Fraction add_n_fractions(int n, Fraction f[n]) {
+69          Fraction sum = f[0];
+70          for (int i = 1; i < n; i++) {
+(gdb) l
+71              sum = add_fractions(sum, f[i]);
+72          }
+73          return sum;
+74      }
+75
+76      void output(int n, Fraction f[n], Fraction sum) {
+77          printf("Sum of fractions: ");
+78          for (int i = 0; i < n; i++) {
+79              printf("%d/%d", f[i].num, f[i].den);
+80              if (i < n - 1)
+(gdb) l
+81                  printf(" + ");
+82          }
+83          printf(" = %d/%d\n", sum.num, sum.den);
+84      }
+(gdb) l
