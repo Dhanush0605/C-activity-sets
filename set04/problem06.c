@@ -33,6 +33,6 @@ int main() {
     char string[100];
     input_string(string);
     int no_words = count_words(string);
-    output(string, no_words);
+    output(string,no_words);
     return 0;
 }
