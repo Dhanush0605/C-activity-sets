@@ -1,0 +1,48 @@
+Reading symbols from a.exe...
+(gdb) r
+Starting program: /c/Users/Dhanush DN/Documents/c-activity-sets/set05/a.exe
+[New Thread 1136.0x4460]
+[New Thread 1136.0x4090]
+[New Thread 1136.0x454c]
+Enter the stomach radius, height, and length of the camel: 1 1 1
+The weight of the camel with radius: 1.0, height: 1.0, length: 1.0 is 3.1415
+[Thread 1136.0x770 exited with code 0]
+[Thread 1136.0x4460 exited with code 0]
+[Thread 1136.0x454c exited with code 0]
+[Inferior 1 (process 1136) exited normally]
+(gdb) l
+1       #include <stdio.h>
+2       #include <math.h>
+3
+4       #define PI 3.1415
+5
+6       void input_camel_details(float *radius, float *height, float *length);
+7       float find_weight(float radius, float height, float length);
+8       void output(float radius, float height, float length, float weight);
+9
+10      int main() {
+(gdb) l
+11          float radius, height, length, weight;
+12
+13          input_camel_details(&radius, &height, &length);
+14          weight = find_weight(radius, height, length);
+15          output(radius, height, length, weight);
+16
+17          return 0;
+18      }
+19
+20      void input_camel_details(float *radius, float *height, float *length) {
+(gdb) l
+21          printf("Enter the stomach radius, height, and length of the camel: ");
+22          scanf("%f %f %f", radius, height, length);
+23      }
+24
+25      float find_weight(float radius, float height, float length) {
+26          return PI * pow(radius, 3) * sqrt(height * length);
+27      }
+28
+29      void output(float radius, float height, float length, float weight) {
+30          printf("The weight of the camel with radius: %.1f, height: %.1f, length: %.1f is %.4f\n", radius, height, length, weight);
+(gdb) l
+31      }
+(gdb) l
