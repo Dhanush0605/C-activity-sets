@@ -1,0 +1,57 @@
+Reading symbols from a.exe...
+(gdb) r
+Starting program: /c/Users/Dhanush DN/Documents/c-activity-sets/set05/a.exe
+[New Thread 5988.0x4b84]
+[New Thread 5988.0x5490]
+[New Thread 5988.0x4ad4]
+Enter coordinates of first point (x y): 1.0 1.0
+Enter coordinates of second point (x y): 2.0 2.0
+The Distance between (1.0,1.0) and (2.0,2.0) is 1.4
+[Thread 5988.0x3934 exited with code 0]
+[Thread 5988.0x4b84 exited with code 0]
+[Thread 5988.0x4ad4 exited with code 0]
+[Inferior 1 (process 5988) exited normally]
+(gdb) l
+5           float x;
+6           float y;
+7       };
+8
+9       typedef struct _point Point;
+10
+11      Point input();
+12      void dist(Point a, Point b, float *res);
+13      void output(Point a, Point b, float res);
+14
+(gdb) l
+15      int main() {
+16          Point a, b;
+17          float result;
+18
+19          printf("Enter coordinates of first point (x y): ");
+20          a = input();
+21
+22          printf("Enter coordinates of second point (x y): ");
+23          b = input();
+24
+(gdb) l
+25          dist(a, b, &result);
+26          output(a, b, result);
+27
+28          return 0;
+29      }
+30
+31      Point input() {
+32          Point p;
+33          scanf("%f %f", &p.x, &p.y);
+34          return p;
+(gdb) l
+35      }
+36
+37      void dist(Point a, Point b, float *res) {
+38          *res = sqrt(pow(b.x - a.x, 2) + pow(b.y - a.y, 2));
+39      }
+40
+41      void output(Point a, Point b, float res) {
+42          printf("The Distance between (%.1f,%.1f) and (%.1f,%.1f) is %.1f\n", a.x, a.y, b.x, b.y, res);
+43      }
+(gdb) l
